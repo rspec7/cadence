@@ -53,7 +53,7 @@ html, body { height: 100%; background: var(--bg); font-family: 'DM Sans', sans-s
 .streak-badge { display: flex; align-items: center; gap: 5px; background: var(--amber-light); border: 1px solid rgba(184,118,10,0.2); border-radius: 20px; padding: 5px 10px; font-size: 13px; font-weight: 500; color: var(--amber); }
 .scroll-area { flex: 1; overflow-y: auto; overflow-x: hidden; -webkit-overflow-scrolling: touch; padding: 0 16px calc(env(safe-area-inset-bottom, 0px) + 100px); width: 100%; box-sizing: border-box; }
 .bottom-nav { position: fixed; bottom: 0; left: 50%; transform: translateX(-50%); width: 100%; max-width: 430px; background: var(--bg); border-top: 1px solid var(--border); padding: 8px 0 calc(env(safe-area-inset-bottom, 0px) + 8px); display: flex; z-index: 100; }
-  .standalone .bottom-nav { position: fixed; padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 4px); }
+  .standalone .bottom-nav { position: fixed; bottom: 0; padding-bottom: env(safe-area-inset-bottom, 0px); }
   .standalone .app { height: 100dvh; }
   .standalone .scroll-area { flex: 1; min-height: 0; }
 .nav-btn { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 3px; padding: 6px 4px; border: none; background: none; cursor: pointer; color: var(--text3); transition: color 0.2s; }
@@ -220,6 +220,7 @@ html, body { height: 100%; background: var(--bg); font-family: 'DM Sans', sans-s
         <span>Cadence</span>
       </div>
       <div class="streak-badge" id="streakBadge">🔥 <span id="streakCount">0</span> day streak</div>
+      <div id="debugMode" style="display:none;font-size:10px;background:#2D5A3D;color:white;padding:2px 6px;border-radius:8px;margin-left:6px;">standalone</div>
     </div>
   </div>
 
@@ -1330,6 +1331,10 @@ function restoreWpwState() {
 // ─── STANDALONE MODE DETECTION ───────────────────────────────────────────────
 if (window.navigator.standalone === true) {
   document.documentElement.classList.add('standalone');
+  document.addEventListener('DOMContentLoaded', () => {
+    const d = document.getElementById('debugMode');
+    if (d) d.style.display = 'block';
+  });
 }
 
 // ─── INIT ────────────────────────────────────────────────────────────────────
