@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Cadence">
@@ -98,7 +98,7 @@ html, body { height: 100%; background: var(--bg); font-family: 'DM Sans', sans-s
 .ex-expand.hidden { display: none; }
 
 /* SVG diagram */
-.diagram-box { background: var(--surface2); border-radius: var(--radius-sm); padding: 16px; margin: 12px 0; display: flex; justify-content: center; }
+.diagram-box { background: transparent; border-radius: var(--radius-sm); padding: 0; margin: 12px 0; display: block; overflow: hidden; border-radius: var(--radius); }
 .diagram-box svg { width: 100%; max-width: 300px; height: auto; }
 
 /* Tiers */
@@ -389,460 +389,168 @@ const PHASES = [
 const EXERCISES = {
   morning: [
     {
-      id:'cat-cow', name:'Cat-cow stretch', focus:'stretch', pill:'pill-stretch',
+      id:'cat-cow', name:'Cat-Cow Stretch', focus:'stretch', pill:'pill-stretch',
       desc:'On hands and knees. Arch your back up like a cat (round spine, tuck chin), hold 2 sec. Then drop belly down and lift head like a cow (sway spine), hold 2 sec. Breathes life into a stiff lower back.',
       tiers: [
         {label:'Easy', reps:'6 reps', note:'Slow, small range'},
         {label:'Medium', reps:'10 reps', note:'Full range of motion'},
         {label:'Hard', reps:'10 reps + hold', note:'3-sec hold each end'}
       ],
-      diagram: `<svg viewBox="0 0 280 120" xmlns="http://www.w3.org/2000/svg">
-        <text x="60" y="14" font-size="10" fill="#6B6860" font-family="DM Sans,sans-serif" text-anchor="middle">Cat (exhale)</text>
-        <text x="200" y="14" font-size="10" fill="#6B6860" font-family="DM Sans,sans-serif" text-anchor="middle">Cow (inhale)</text>
-        <!-- Cat pose -->
-        <circle cx="60" cy="38" r="9" fill="none" stroke="#2D5A3D" stroke-width="1.8"/>
-        <path d="M60 47 Q60 62 60 72" stroke="#2D5A3D" stroke-width="1.8" fill="none"/>
-        <path d="M30 55 Q45 48 60 52 Q75 56 90 50" stroke="#2D5A3D" stroke-width="2.2" fill="none" stroke-linecap="round"/>
-        <line x1="42" y1="72" x2="38" y2="90" stroke="#2D5A3D" stroke-width="1.8" stroke-linecap="round"/>
-        <line x1="52" y1="72" x2="48" y2="90" stroke="#2D5A3D" stroke-width="1.8" stroke-linecap="round"/>
-        <line x1="30" y1="55" x2="26" y2="73" stroke="#2D5A3D" stroke-width="1.8" stroke-linecap="round"/>
-        <line x1="90" y1="50" x2="86" y2="68" stroke="#2D5A3D" stroke-width="1.8" stroke-linecap="round"/>
-        <path d="M60 47 Q56 34 53 30" stroke="#2D5A3D" stroke-width="1.5" fill="none"/>
-        <text x="60" y="108" font-size="9" fill="#2D5A3D" font-family="DM Sans,sans-serif" text-anchor="middle">Spine rounds up</text>
-        <!-- Arrow -->
-        <text x="140" y="60" font-size="18" fill="#9E9B94" text-anchor="middle">⇄</text>
-        <!-- Cow pose -->
-        <circle cx="200" cy="38" r="9" fill="none" stroke="#2D5A3D" stroke-width="1.8"/>
-        <path d="M200 47 Q200 58 200 68" stroke="#2D5A3D" stroke-width="1.8" fill="none"/>
-        <path d="M170 45 Q185 56 200 52 Q215 48 230 55" stroke="#2D5A3D" stroke-width="2.2" fill="none" stroke-linecap="round"/>
-        <line x1="182" y1="68" x2="178" y2="86" stroke="#2D5A3D" stroke-width="1.8" stroke-linecap="round"/>
-        <line x1="192" y1="68" x2="188" y2="86" stroke="#2D5A3D" stroke-width="1.8" stroke-linecap="round"/>
-        <line x1="170" y1="45" x2="166" y2="63" stroke="#2D5A3D" stroke-width="1.8" stroke-linecap="round"/>
-        <line x1="230" y1="55" x2="226" y2="73" stroke="#2D5A3D" stroke-width="1.8" stroke-linecap="round"/>
-        <path d="M200 47 Q205 36 208 30" stroke="#2D5A3D" stroke-width="1.5" fill="none"/>
-        <text x="200" y="108" font-size="9" fill="#2D5A3D" font-family="DM Sans,sans-serif" text-anchor="middle">Belly drops down</text>
-      </svg>`
+      diagram: `<img src="cadence-cat-cow.png" alt="cat-cow" style="width:100%;height:auto;border-radius:8px;display:block;">`
     },
     {
-      id:'hip-circles', name:'Standing hip circles', focus:'stretch', pill:'pill-stretch',
+      id:'hip-circles', name:'Standing Hip Circles', focus:'stretch', pill:'pill-stretch',
       desc:'Stand feet shoulder-width apart, hands on hips. Draw big slow circles with your hips — like a hula hoop. 5 each direction. Loosens the hip flexors and lower back that tighten overnight.',
       tiers: [
         {label:'Easy', reps:'5 each side', note:'Small circles'},
         {label:'Medium', reps:'8 each side', note:'Full big circles'},
         {label:'Hard', reps:'10 each side', note:'Add slow balance shift'}
       ],
-      diagram: `<svg viewBox="0 0 280 120" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="140" cy="35" r="9" fill="none" stroke="#2D5A3D" stroke-width="1.8"/>
-        <line x1="140" y1="44" x2="140" y2="72" stroke="#2D5A3D" stroke-width="1.8"/>
-        <line x1="120" y1="55" x2="160" y2="55" stroke="#2D5A3D" stroke-width="1.8"/>
-        <line x1="140" y1="72" x2="128" y2="95" stroke="#2D5A3D" stroke-width="1.8" stroke-linecap="round"/>
-        <line x1="140" y1="72" x2="152" y2="95" stroke="#2D5A3D" stroke-width="1.8" stroke-linecap="round"/>
-        <ellipse cx="140" cy="66" rx="20" ry="10" fill="none" stroke="#B8760A" stroke-width="1.5" stroke-dasharray="4 3"/>
-        <text x="168" y="58" font-size="10" fill="#B8760A" font-family="DM Sans,sans-serif">← circle</text>
-        <text x="168" y="72" font-size="10" fill="#B8760A" font-family="DM Sans,sans-serif">both ways</text>
-        <text x="140" y="112" font-size="9" fill="#6B6860" font-family="DM Sans,sans-serif" text-anchor="middle">Hands on hips, feet shoulder-width</text>
-      </svg>`
+      diagram: `<img src="cadence-standing-hip-circles.png" alt="hip-circles" style="width:100%;height:auto;border-radius:8px;display:block;">`
     },
     {
-      id:'calf-raise', name:'Standing calf raise', focus:'knee', pill:'pill-knee',
+      id:'calf-raise', name:'Standing Calf Raise', focus:'knee', pill:'pill-knee',
       desc:'Light hands on desk for balance. Rise up on your toes slowly (2 sec up, 2 sec down). Builds calf strength that protects the knee when running. Very low heart rate impact.',
       tiers: [
         {label:'Easy', reps:'10 reps', note:'Both feet, slow'},
         {label:'Medium', reps:'15 reps', note:'Pause 1 sec at top'},
         {label:'Hard', reps:'10 each leg', note:'Single-leg calf raise'}
       ],
-      diagram: `<svg viewBox="0 0 280 120" xmlns="http://www.w3.org/2000/svg">
-        <text x="70" y="14" font-size="10" fill="#6B6860" font-family="DM Sans,sans-serif" text-anchor="middle">Start</text>
-        <text x="200" y="14" font-size="10" fill="#6B6860" font-family="DM Sans,sans-serif" text-anchor="middle">Up (2 sec)</text>
-        <!-- Start -->
-        <circle cx="70" cy="32" r="9" fill="none" stroke="#2D5A3D" stroke-width="1.8"/>
-        <line x1="70" y1="41" x2="70" y2="68" stroke="#2D5A3D" stroke-width="1.8"/>
-        <line x1="55" y1="52" x2="85" y2="52" stroke="#2D5A3D" stroke-width="1.8"/>
-        <line x1="70" y1="68" x2="58" y2="88" stroke="#2D5A3D" stroke-width="1.8" stroke-linecap="round"/>
-        <line x1="70" y1="68" x2="82" y2="88" stroke="#2D5A3D" stroke-width="1.8" stroke-linecap="round"/>
-        <line x1="58" y1="88" x2="56" y2="95" stroke="#2D5A3D" stroke-width="1.8" stroke-linecap="round"/>
-        <line x1="82" y1="88" x2="84" y2="95" stroke="#2D5A3D" stroke-width="1.8" stroke-linecap="round"/>
-        <!-- Arrow -->
-        <text x="140" y="60" font-size="18" fill="#9E9B94" text-anchor="middle">→</text>
-        <!-- Up -->
-        <circle cx="200" cy="24" r="9" fill="none" stroke="#2D5A3D" stroke-width="1.8"/>
-        <line x1="200" y1="33" x2="200" y2="60" stroke="#2D5A3D" stroke-width="1.8"/>
-        <line x1="185" y1="44" x2="215" y2="44" stroke="#2D5A3D" stroke-width="1.8"/>
-        <line x1="200" y1="60" x2="188" y2="80" stroke="#2D5A3D" stroke-width="1.8" stroke-linecap="round"/>
-        <line x1="200" y1="60" x2="212" y2="80" stroke="#2D5A3D" stroke-width="1.8" stroke-linecap="round"/>
-        <line x1="188" y1="80" x2="184" y2="88" stroke="#2D5A3D" stroke-width="1.8" stroke-linecap="round"/>
-        <line x1="212" y1="80" x2="216" y2="88" stroke="#2D5A3D" stroke-width="1.8" stroke-linecap="round"/>
-        <path d="M220 55 L220 35" stroke="#B8760A" stroke-width="1.5" marker-end="url(#arr)" fill="none"/>
-        <defs><marker id="arr" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#B8760A"/></marker></defs>
-        <text x="200" y="108" font-size="9" fill="#6B6860" font-family="DM Sans,sans-serif" text-anchor="middle">Rise on toes, slow and controlled</text>
-      </svg>`
+      diagram: `<img src="cadence-standing-calf-raises.png" alt="calf-raise" style="width:100%;height:auto;border-radius:8px;display:block;">`
     }
   ],
   runday: [
     {
-      id:'dead-bug', name:'Dead bug', focus:'core', pill:'pill-core',
+      id:'dead-bug', name:'Dead Bug', focus:'core', pill:'pill-core',
       desc:'Lie on back, arms to ceiling, knees bent at 90° in the air (tabletop). Slowly lower your right arm back and extend your left leg — hover above floor. Return, switch sides. Keep lower back pressed flat to floor the whole time.',
       tiers: [
         {label:'Easy', reps:'4 each side', note:'Arms only, legs stay still'},
         {label:'Medium', reps:'6 each side', note:'Full arm + opposite leg'},
         {label:'Hard', reps:'8 each side', note:'3-sec hold at extension'}
       ],
-      diagram: `<svg viewBox="0 0 280 130" xmlns="http://www.w3.org/2000/svg">
-        <text x="70" y="14" font-size="10" fill="#6B6860" font-family="DM Sans,sans-serif" text-anchor="middle">Start</text>
-        <text x="200" y="14" font-size="10" fill="#6B6860" font-family="DM Sans,sans-serif" text-anchor="middle">Extend (hover)</text>
-        <!-- Ground line -->
-        <line x1="10" y1="100" x2="130" y2="100" stroke="#D3D1C7" stroke-width="1"/>
-        <line x1="145" y1="100" x2="270" y2="100" stroke="#D3D1C7" stroke-width="1"/>
-        <!-- Start: lying, knees up, arms up -->
-        <ellipse cx="70" cy="88" rx="22" ry="7" fill="none" stroke="#2D5A3D" stroke-width="1.8"/>
-        <circle cx="48" cy="78" r="8" fill="none" stroke="#2D5A3D" stroke-width="1.8"/>
-        <line x1="56" y1="80" x2="70" y2="86" stroke="#2D5A3D" stroke-width="1.8"/>
-        <line x1="70" y1="80" x2="70" y2="68" stroke="#2D5A3D" stroke-width="1.8"/>
-        <line x1="70" y1="68" x2="60" y2="55" stroke="#2D5A3D" stroke-width="1.8" stroke-linecap="round"/>
-        <line x1="70" y1="68" x2="80" y2="55" stroke="#2D5A3D" stroke-width="1.8" stroke-linecap="round"/>
-        <line x1="60" y1="55" x2="55" y2="42" stroke="#2D5A3D" stroke-width="1.5" stroke-linecap="round"/>
-        <line x1="80" y1="55" x2="85" y2="42" stroke="#2D5A3D" stroke-width="1.5" stroke-linecap="round"/>
-        <text x="70" y="118" font-size="9" fill="#6B6860" font-family="DM Sans,sans-serif" text-anchor="middle">Arms up, knees 90°</text>
-        <!-- Arrow -->
-        <text x="137" y="68" font-size="16" fill="#9E9B94" text-anchor="middle">→</text>
-        <!-- Extend: one arm back, opposite leg out -->
-        <ellipse cx="200" cy="88" rx="22" ry="7" fill="none" stroke="#2D5A3D" stroke-width="1.8"/>
-        <circle cx="178" cy="78" r="8" fill="none" stroke="#2D5A3D" stroke-width="1.8"/>
-        <line x1="186" y1="80" x2="200" y2="86" stroke="#2D5A3D" stroke-width="1.8"/>
-        <line x1="200" y1="80" x2="200" y2="68" stroke="#2D5A3D" stroke-width="1.8"/>
-        <line x1="200" y1="68" x2="187" y2="60" stroke="#2D5A3D" stroke-width="1.8"/>
-        <line x1="187" y1="60" x2="175" y2="45" stroke="#2D5A3D" stroke-width="1.5" stroke-linecap="round"/>
-        <line x1="200" y1="68" x2="213" y2="62" stroke="#2D5A3D" stroke-width="1.8"/>
-        <line x1="213" y1="62" x2="230" y2="62" stroke="#2D5A3D" stroke-width="1.5" stroke-linecap="round"/>
-        <circle cx="231" cy="62" r="3" fill="none" stroke="#B8760A" stroke-width="1.5"/>
-        <text x="240" y="60" font-size="9" fill="#B8760A" font-family="DM Sans,sans-serif">hover!</text>
-        <text x="200" y="118" font-size="9" fill="#6B6860" font-family="DM Sans,sans-serif" text-anchor="middle">Back flat · opposite arm/leg</text>
-      </svg>`
+      diagram: `<img src="cadence-dead-bugs.png" alt="dead-bug" style="width:100%;height:auto;border-radius:8px;display:block;">`
     },
     {
-      id:'glute-bridge', name:'Glute bridge', focus:'knee', pill:'pill-knee',
+      id:'glute-bridge', name:'Glute Bridge', focus:'knee', pill:'pill-knee',
       desc:'Lie on back, knees bent, feet flat hip-width apart. Drive hips up by squeezing glutes until body forms a straight line from shoulders to knees. Hold at top, lower slowly. Strong glutes = major knee pain prevention when running.',
       tiers: [
         {label:'Easy', reps:'8 reps', note:'1-sec hold at top'},
         {label:'Medium', reps:'12 reps', note:'3-sec hold at top'},
         {label:'Hard', reps:'8 each leg', note:'Single-leg bridge'}
       ],
-      diagram: `<svg viewBox="0 0 280 130" xmlns="http://www.w3.org/2000/svg">
-        <text x="70" y="14" font-size="10" fill="#6B6860" font-family="DM Sans,sans-serif" text-anchor="middle">Start</text>
-        <text x="200" y="14" font-size="10" fill="#6B6860" font-family="DM Sans,sans-serif" text-anchor="middle">Bridge up</text>
-        <line x1="10" y1="100" x2="130" y2="100" stroke="#D3D1C7" stroke-width="1"/>
-        <line x1="145" y1="100" x2="270" y2="100" stroke="#D3D1C7" stroke-width="1"/>
-        <!-- Start -->
-        <ellipse cx="48" cy="90" rx="18" ry="6" fill="none" stroke="#2D5A3D" stroke-width="1.8"/>
-        <circle cx="34" cy="80" r="8" fill="none" stroke="#2D5A3D" stroke-width="1.8"/>
-        <line x1="42" y1="82" x2="48" y2="88" stroke="#2D5A3D" stroke-width="1.8"/>
-        <line x1="48" y1="82" x2="52" y2="72" stroke="#2D5A3D" stroke-width="1.8"/>
-        <line x1="52" y1="72" x2="62" y2="90" stroke="#2D5A3D" stroke-width="1.8"/>
-        <line x1="62" y1="90" x2="67" y2="100" stroke="#2D5A3D" stroke-width="1.8"/>
-        <line x1="48" y1="88" x2="90" y2="90" stroke="#2D5A3D" stroke-width="1.8"/>
-        <line x1="90" y1="90" x2="93" y2="100" stroke="#2D5A3D" stroke-width="1.8"/>
-        <!-- Arrow -->
-        <text x="137" y="68" font-size="16" fill="#9E9B94" text-anchor="middle">→</text>
-        <!-- Bridge -->
-        <ellipse cx="178" cy="90" rx="18" ry="6" fill="none" stroke="#2D5A3D" stroke-width="1.8"/>
-        <circle cx="164" cy="80" r="8" fill="none" stroke="#2D5A3D" stroke-width="1.8"/>
-        <line x1="172" y1="82" x2="178" y2="88" stroke="#2D5A3D" stroke-width="1.8"/>
-        <path d="M178 85 Q190 60 205 58 Q218 56 225 72 Q228 80 230 90" stroke="#2D5A3D" stroke-width="1.8" fill="none" stroke-linecap="round"/>
-        <line x1="225" y1="72" x2="232" y2="90" stroke="#2D5A3D" stroke-width="1.8"/>
-        <line x1="232" y1="90" x2="237" y2="100" stroke="#2D5A3D" stroke-width="1.8"/>
-        <text x="205" y="48" font-size="9" fill="#B8760A" font-family="DM Sans,sans-serif" text-anchor="middle">squeeze!</text>
-        <path d="M205 51 L205 56" stroke="#B8760A" stroke-width="1" fill="none"/>
-        <text x="200" y="118" font-size="9" fill="#6B6860" font-family="DM Sans,sans-serif" text-anchor="middle">Straight line shoulder → knee</text>
-      </svg>`
+      diagram: `<img src="cadence-glute-bridges.png" alt="glute-bridge" style="width:100%;height:auto;border-radius:8px;display:block;">`
     },
     {
-      id:'hamstring-stretch', name:'Supine hamstring stretch', focus:'stretch', pill:'pill-stretch',
+      id:'hamstring-stretch', name:'Supine Hamstring Stretch', focus:'stretch', pill:'pill-stretch',
       desc:'Lie on back. Loop a towel or belt around one foot and straighten the leg toward the ceiling. Keep the other leg flat. Pull gently — strong stretch, not pain. Back stays supported.',
       tiers: [
         {label:'Easy', reps:'20 sec hold', note:'Knee slightly bent is fine'},
         {label:'Medium', reps:'30 sec hold', note:'Straighten leg more'},
         {label:'Hard', reps:'45 sec hold', note:'Fully straight, flex foot'}
       ],
-      diagram: `<svg viewBox="0 0 280 120" xmlns="http://www.w3.org/2000/svg">
-        <line x1="10" y1="95" x2="270" y2="95" stroke="#D3D1C7" stroke-width="1"/>
-        <ellipse cx="55" cy="88" rx="22" ry="6" fill="none" stroke="#2D5A3D" stroke-width="1.8"/>
-        <circle cx="34" cy="79" r="8" fill="none" stroke="#2D5A3D" stroke-width="1.8"/>
-        <line x1="42" y1="81" x2="55" y2="86" stroke="#2D5A3D" stroke-width="1.8"/>
-        <line x1="55" y1="82" x2="90" y2="88" stroke="#2D5A3D" stroke-width="1.8"/>
-        <line x1="90" y1="88" x2="100" y2="95" stroke="#2D5A3D" stroke-width="1.8"/>
-        <line x1="55" y1="82" x2="70" y2="50" stroke="#2D5A3D" stroke-width="2" stroke-linecap="round"/>
-        <line x1="70" y1="50" x2="80" y2="20" stroke="#2D5A3D" stroke-width="1.8" stroke-dasharray="3 2" stroke-linecap="round"/>
-        <path d="M60 38 Q70 22 85 18" stroke="#B8760A" stroke-width="1.5" fill="none" stroke-dasharray="4 3"/>
-        <text x="90" y="17" font-size="10" fill="#B8760A" font-family="DM Sans,sans-serif">towel</text>
-        <line x1="70" y1="50" x2="55" y2="82" stroke="#2D5A3D" stroke-width="1.8" stroke-linecap="round"/>
-        <text x="145" y="78" font-size="10" fill="#6B6860" font-family="DM Sans,sans-serif">Other leg flat on floor</text>
-        <text x="140" y="112" font-size="9" fill="#6B6860" font-family="DM Sans,sans-serif" text-anchor="middle">Hold and breathe — don't bounce</text>
-      </svg>`
+      diagram: `<img src="cadence-supine-hamstring-stretch.png" alt="hamstring-stretch" style="width:100%;height:auto;border-radius:8px;display:block;">`
     },
     {
-      id:'figure4', name:'Figure-4 piriformis stretch', focus:'stretch', pill:'pill-stretch',
+      id:'figure4', name:'Figure-4 Piriformis Stretch', focus:'stretch', pill:'pill-stretch',
       desc:'Sit on edge of chair. Cross right ankle over left knee (figure-4 shape). Back straight, lean forward gently from hips. Feel it deep in the right glute and hip. Releases hip tightness that causes lower back pain.',
       tiers: [
         {label:'Easy', reps:'20 sec each', note:'Sit upright, light lean'},
         {label:'Medium', reps:'30 sec each', note:'Lean further forward'},
         {label:'Hard', reps:'45 sec each', note:'Gentle downward press on knee'}
       ],
-      diagram: `<svg viewBox="0 0 280 120" xmlns="http://www.w3.org/2000/svg">
-        <rect x="40" y="75" width="60" height="12" rx="3" fill="none" stroke="#9E9B94" stroke-width="1.5"/>
-        <line x1="45" y1="87" x2="42" y2="108" stroke="#9E9B94" stroke-width="1.5"/>
-        <line x1="95" y1="87" x2="98" y2="108" stroke="#9E9B94" stroke-width="1.5"/>
-        <circle cx="70" cy="35" r="9" fill="none" stroke="#2D5A3D" stroke-width="1.8"/>
-        <line x1="70" y1="44" x2="70" y2="75" stroke="#2D5A3D" stroke-width="1.8"/>
-        <line x1="50" y1="58" x2="90" y2="58" stroke="#2D5A3D" stroke-width="1.8"/>
-        <line x1="70" y1="75" x2="55" y2="75" stroke="#2D5A3D" stroke-width="1.8"/>
-        <path d="M55 75 Q48 70 52 60" stroke="#2D5A3D" stroke-width="1.8" fill="none"/>
-        <path d="M52 60 Q58 52 66 56" stroke="#2D5A3D" stroke-width="1.8" fill="none"/>
-        <text x="30" y="55" font-size="9" fill="#B8760A" font-family="DM Sans,sans-serif">ankle</text>
-        <text x="27" y="64" font-size="9" fill="#B8760A" font-family="DM Sans,sans-serif">on knee</text>
-        <text x="145" y="40" font-size="10" fill="#6B6860" font-family="DM Sans,sans-serif">Lean forward</text>
-        <text x="145" y="53" font-size="10" fill="#6B6860" font-family="DM Sans,sans-serif">from hips →</text>
-        <text x="145" y="70" font-size="9" fill="#B8760A" font-family="DM Sans,sans-serif">Feel it deep</text>
-        <text x="145" y="82" font-size="9" fill="#B8760A" font-family="DM Sans,sans-serif">in the glute</text>
-        <text x="140" y="115" font-size="9" fill="#6B6860" font-family="DM Sans,sans-serif" text-anchor="middle">Keep back straight, lean from hips not waist</text>
-      </svg>`
+      diagram: `<img src="cadence-pirifomis-stretch.png" alt="figure4" style="width:100%;height:auto;border-radius:8px;display:block;">`
     },
     {
-      id:'hip-flexor', name:'Kneeling hip flexor stretch', focus:'stretch', pill:'pill-stretch',
+      id:'hip-flexor', name:'Kneeling Hip Flexor Stretch', focus:'stretch', pill:'pill-stretch',
       desc:'Kneel on one knee (towel under if hard floor). Other foot forward, knee at 90°. Push hips forward gently until you feel a stretch along the front of the back leg\'s hip. Priority stretch — tight hip flexors cause lower back pain.',
       tiers: [
         {label:'Easy', reps:'20 sec each', note:'Small forward shift'},
         {label:'Medium', reps:'30 sec each', note:'Reach arm up same side'},
         {label:'Hard', reps:'40 sec each', note:'Add slight side bend away'}
       ],
-      diagram: `<svg viewBox="0 0 280 130" xmlns="http://www.w3.org/2000/svg">
-        <line x1="10" y1="108" x2="270" y2="108" stroke="#D3D1C7" stroke-width="1"/>
-        <circle cx="120" cy="30" r="9" fill="none" stroke="#2D5A3D" stroke-width="1.8"/>
-        <line x1="120" y1="39" x2="120" y2="65" stroke="#2D5A3D" stroke-width="1.8"/>
-        <line x1="100" y1="52" x2="140" y2="52" stroke="#2D5A3D" stroke-width="1.8"/>
-        <line x1="120" y1="65" x2="148" y2="90" stroke="#2D5A3D" stroke-width="1.8" stroke-linecap="round"/>
-        <line x1="148" y1="90" x2="155" y2="108" stroke="#2D5A3D" stroke-width="1.8" stroke-linecap="round"/>
-        <line x1="120" y1="65" x2="100" y2="85" stroke="#2D5A3D" stroke-width="1.8" stroke-linecap="round"/>
-        <ellipse cx="95" cy="102" rx="12" ry="5" fill="none" stroke="#2D5A3D" stroke-width="1.5"/>
-        <line x1="100" y1="52" x2="85" y2="62" stroke="#2D5A3D" stroke-width="1.5"/>
-        <line x1="85" y1="62" x2="75" y2="75" stroke="#2D5A3D" stroke-width="1.5"/>
-        <text x="55" y="80" font-size="9" fill="#B8760A" font-family="DM Sans,sans-serif">feel stretch</text>
-        <text x="55" y="90" font-size="9" fill="#B8760A" font-family="DM Sans,sans-serif">here ↓</text>
-        <path d="M115 95 Q100 100 88 96" stroke="#B8760A" stroke-width="1" stroke-dasharray="3 2" fill="none"/>
-        <text x="120" y="122" font-size="9" fill="#6B6860" font-family="DM Sans,sans-serif" text-anchor="middle">Push hips forward gently, keep torso tall</text>
-      </svg>`
+      diagram: `<img src="cadence-kneeling-hip-flexor.png" alt="hip-flexor" style="width:100%;height:auto;border-radius:8px;display:block;">`
     },
     {
-      id:'childs-pose', name:"Child's pose", focus:'stretch', pill:'pill-stretch',
+      id:'childs-pose', name:"Child's Pose", focus:'stretch', pill:'pill-stretch',
       desc:'Kneel, sit back toward heels, stretch arms forward along the floor and rest forehead down. Breathe deeply. A perfect finisher that decompresses the lumbar spine. Hold 45–60 sec every session without exception.',
       tiers: [
         {label:'Easy', reps:'30 sec', note:'Arms forward, relax'},
         {label:'Medium', reps:'45 sec', note:'Walk arms further out'},
         {label:'Hard', reps:'60 sec', note:'Arms to one side, then other'}
       ],
-      diagram: `<svg viewBox="0 0 280 110" xmlns="http://www.w3.org/2000/svg">
-        <line x1="10" y1="90" x2="270" y2="90" stroke="#D3D1C7" stroke-width="1"/>
-        <circle cx="55" cy="60" r="9" fill="none" stroke="#2D5A3D" stroke-width="1.8"/>
-        <path d="M55 69 Q55 78 68 82" stroke="#2D5A3D" stroke-width="1.8" fill="none" stroke-linecap="round"/>
-        <path d="M68 82 Q110 84 150 82 Q180 80 210 78" stroke="#2D5A3D" stroke-width="1.8" fill="none" stroke-linecap="round"/>
-        <path d="M68 82 Q80 85 90 90" stroke="#2D5A3D" stroke-width="1.5" fill="none" stroke-linecap="round"/>
-        <path d="M90 90 Q100 88 110 90" stroke="#2D5A3D" stroke-width="1.5" fill="none" stroke-linecap="round"/>
-        <circle cx="210" cy="76" r="4" fill="none" stroke="#B8760A" stroke-width="1.5"/>
-        <text x="218" y="73" font-size="9" fill="#B8760A" font-family="DM Sans,sans-serif">hands</text>
-        <text x="218" y="82" font-size="9" fill="#B8760A" font-family="DM Sans,sans-serif">forward</text>
-        <text x="140" y="106" font-size="9" fill="#6B6860" font-family="DM Sans,sans-serif" text-anchor="middle">Breathe deeply — let your lower back release</text>
-      </svg>`
+      diagram: `<img src="cadence-childs-pose.png" alt="childs-pose" style="width:100%;height:auto;border-radius:8px;display:block;">`
     }
   ],
   offday: [
     {
-      id:'wall-sit', name:'Wall sit', focus:'knee', pill:'pill-knee',
+      id:'wall-sit', name:'Wall Sit', focus:'knee', pill:'pill-knee',
       desc:'Back flat against wall, slide down until thighs are parallel (or as far as comfortable). Feet shoulder-width, flat on floor. Hold. Do not go past 90° — stop where comfortable. Best exercise for quad and knee strength without joint impact.',
       tiers: [
         {label:'Easy', reps:'15 sec hold', note:'High angle (135°), no pain'},
         {label:'Medium', reps:'30 sec hold', note:'Lower thighs, ~100°'},
         {label:'Hard', reps:'45 sec hold', note:'Full parallel, 90°'}
       ],
-      diagram: `<svg viewBox="0 0 280 130" xmlns="http://www.w3.org/2000/svg">
-        <rect x="10" y="20" width="8" height="100" rx="2" fill="#D3D1C7"/>
-        <circle cx="50" cy="38" r="9" fill="none" stroke="#2D5A3D" stroke-width="1.8"/>
-        <line x1="50" y1="47" x2="50" y2="75" stroke="#2D5A3D" stroke-width="1.8"/>
-        <line x1="32" y1="60" x2="68" y2="60" stroke="#2D5A3D" stroke-width="1.8"/>
-        <line x1="32" y1="60" x2="18" y2="60" stroke="#2D5A3D" stroke-width="1.5" stroke-dasharray="3 2"/>
-        <path d="M50 75 Q50 90 35 95" stroke="#2D5A3D" stroke-width="1.8" fill="none" stroke-linecap="round"/>
-        <line x1="35" y1="95" x2="28" y2="112" stroke="#2D5A3D" stroke-width="1.8" stroke-linecap="round"/>
-        <path d="M50 75 Q50 90 65 95" stroke="#2D5A3D" stroke-width="1.8" fill="none" stroke-linecap="round"/>
-        <line x1="65" y1="95" x2="72" y2="112" stroke="#2D5A3D" stroke-width="1.8" stroke-linecap="round"/>
-        <line x1="10" y1="112" x2="270" y2="112" stroke="#D3D1C7" stroke-width="1"/>
-        <text x="100" y="58" font-size="10" fill="#6B6860" font-family="DM Sans,sans-serif">Back flat on wall</text>
-        <text x="100" y="75" font-size="10" fill="#6B6860" font-family="DM Sans,sans-serif">Thighs ~parallel</text>
-        <text x="100" y="95" font-size="9" fill="#B8760A" font-family="DM Sans,sans-serif">90° knee angle target</text>
-        <text x="140" y="126" font-size="9" fill="#6B6860" font-family="DM Sans,sans-serif" text-anchor="middle">Stop where comfortable — no pain</text>
-      </svg>`
+      diagram: `<img src="cadence-wall-sit.png" alt="wall-sit" style="width:100%;height:auto;border-radius:8px;display:block;">`
     },
     {
-      id:'squat', name:'Bodyweight squat', focus:'knee', pill:'pill-knee',
+      id:'squat', name:'Bodyweight Squat', focus:'knee', pill:'pill-knee',
       desc:'Feet shoulder-width, toes slightly out. Arms out front or cross-chest. Push hips back and down like sitting into a chair. Chest up, knees tracking over toes. Go only as far as heels stay on floor.',
       tiers: [
         {label:'Easy', reps:'8 reps', note:'Shallow depth, slow'},
         {label:'Medium', reps:'12 reps', note:'Below parallel if able'},
         {label:'Hard', reps:'15 reps', note:'2-sec pause at bottom'}
       ],
-      diagram: `<svg viewBox="0 0 280 130" xmlns="http://www.w3.org/2000/svg">
-        <line x1="10" y1="112" x2="270" y2="112" stroke="#D3D1C7" stroke-width="1"/>
-        <text x="70" y="14" font-size="10" fill="#6B6860" font-family="DM Sans,sans-serif" text-anchor="middle">Stand</text>
-        <text x="200" y="14" font-size="10" fill="#6B6860" font-family="DM Sans,sans-serif" text-anchor="middle">Squat</text>
-        <!-- Stand -->
-        <circle cx="70" cy="28" r="9" fill="none" stroke="#2D5A3D" stroke-width="1.8"/>
-        <line x1="70" y1="37" x2="70" y2="72" stroke="#2D5A3D" stroke-width="1.8"/>
-        <line x1="50" y1="52" x2="90" y2="52" stroke="#2D5A3D" stroke-width="1.8"/>
-        <line x1="70" y1="72" x2="55" y2="95" stroke="#2D5A3D" stroke-width="1.8" stroke-linecap="round"/>
-        <line x1="55" y1="95" x2="48" y2="112" stroke="#2D5A3D" stroke-width="1.8" stroke-linecap="round"/>
-        <line x1="70" y1="72" x2="85" y2="95" stroke="#2D5A3D" stroke-width="1.8" stroke-linecap="round"/>
-        <line x1="85" y1="95" x2="92" y2="112" stroke="#2D5A3D" stroke-width="1.8" stroke-linecap="round"/>
-        <!-- Arrow -->
-        <text x="137" y="72" font-size="16" fill="#9E9B94" text-anchor="middle">→</text>
-        <!-- Squat -->
-        <circle cx="200" cy="42" r="9" fill="none" stroke="#2D5A3D" stroke-width="1.8"/>
-        <path d="M200 51 Q200 62 195 70" stroke="#2D5A3D" stroke-width="1.8" fill="none"/>
-        <line x1="178" y1="64" x2="218" y2="56" stroke="#2D5A3D" stroke-width="1.8"/>
-        <line x1="178" y1="64" x2="160" y2="70" stroke="#2D5A3D" stroke-width="1.5"/>
-        <path d="M195 70 Q185 82 175 90" stroke="#2D5A3D" stroke-width="1.8" fill="none" stroke-linecap="round"/>
-        <line x1="175" y1="90" x2="168" y2="112" stroke="#2D5A3D" stroke-width="1.8" stroke-linecap="round"/>
-        <path d="M195 70 Q210 80 218 88" stroke="#2D5A3D" stroke-width="1.8" fill="none" stroke-linecap="round"/>
-        <line x1="218" y1="88" x2="225" y2="112" stroke="#2D5A3D" stroke-width="1.8" stroke-linecap="round"/>
-        <text x="200" y="126" font-size="9" fill="#6B6860" font-family="DM Sans,sans-serif" text-anchor="middle">Chest up · knees over toes</text>
-      </svg>`
+      diagram: `<img src="cadence-bodyweight-squat.png" alt="squat" style="width:100%;height:auto;border-radius:8px;display:block;">`
     },
     {
-      id:'lunge', name:'Step-back lunge', focus:'knee', pill:'pill-knee',
+      id:'lunge', name:'Step-Back Lunge', focus:'knee', pill:'pill-knee',
       desc:'Stand tall. Step one foot back and lower back knee toward floor (don\'t touch). Front knee stays above ankle. Push back up through front heel. Step-back lunges are safer on the knee than forward lunges for beginners.',
       tiers: [
         {label:'Easy', reps:'5 each leg', note:'Hold desk for balance'},
         {label:'Medium', reps:'8 each leg', note:'No support, arms out'},
         {label:'Hard', reps:'10 each leg', note:'Add light dumbbell (5–10 lb)'}
       ],
-      diagram: `<svg viewBox="0 0 280 130" xmlns="http://www.w3.org/2000/svg">
-        <line x1="10" y1="112" x2="270" y2="112" stroke="#D3D1C7" stroke-width="1"/>
-        <text x="70" y="14" font-size="10" fill="#6B6860" font-family="DM Sans,sans-serif" text-anchor="middle">Stand</text>
-        <text x="200" y="14" font-size="10" fill="#6B6860" font-family="DM Sans,sans-serif" text-anchor="middle">Step back & lower</text>
-        <!-- Stand -->
-        <circle cx="70" cy="28" r="9" fill="none" stroke="#2D5A3D" stroke-width="1.8"/>
-        <line x1="70" y1="37" x2="70" y2="72" stroke="#2D5A3D" stroke-width="1.8"/>
-        <line x1="50" y1="52" x2="90" y2="52" stroke="#2D5A3D" stroke-width="1.8"/>
-        <line x1="70" y1="72" x2="55" y2="95" stroke="#2D5A3D" stroke-width="1.8" stroke-linecap="round"/>
-        <line x1="55" y1="95" x2="48" y2="112" stroke="#2D5A3D" stroke-width="1.8" stroke-linecap="round"/>
-        <line x1="70" y1="72" x2="85" y2="95" stroke="#2D5A3D" stroke-width="1.8" stroke-linecap="round"/>
-        <line x1="85" y1="95" x2="92" y2="112" stroke="#2D5A3D" stroke-width="1.8" stroke-linecap="round"/>
-        <!-- Arrow -->
-        <text x="137" y="72" font-size="16" fill="#9E9B94" text-anchor="middle">→</text>
-        <!-- Lunge -->
-        <circle cx="195" cy="35" r="9" fill="none" stroke="#2D5A3D" stroke-width="1.8"/>
-        <line x1="195" y1="44" x2="195" y2="70" stroke="#2D5A3D" stroke-width="1.8"/>
-        <line x1="175" y1="58" x2="215" y2="58" stroke="#2D5A3D" stroke-width="1.8"/>
-        <path d="M195 70 Q195 80 210 88" stroke="#2D5A3D" stroke-width="1.8" fill="none" stroke-linecap="round"/>
-        <line x1="210" y1="88" x2="218" y2="112" stroke="#2D5A3D" stroke-width="1.8" stroke-linecap="round"/>
-        <path d="M195 70 Q195 80 178 88" stroke="#2D5A3D" stroke-width="1.8" fill="none" stroke-linecap="round"/>
-        <line x1="178" y1="88" x2="165" y2="100" stroke="#2D5A3D" stroke-width="1.8" stroke-linecap="round"/>
-        <ellipse cx="162" cy="104" rx="8" ry="4" fill="none" stroke="#B8760A" stroke-width="1.5"/>
-        <text x="148" y="115" font-size="9" fill="#B8760A" font-family="DM Sans,sans-serif">hover</text>
-        <text x="218" y="126" font-size="9" fill="#6B6860" font-family="DM Sans,sans-serif" text-anchor="middle">Push back up through front heel</text>
-      </svg>`
+      diagram: `<img src="cadence-step-back-lunge.png" alt="lunge" style="width:100%;height:auto;border-radius:8px;display:block;">`
     },
     {
-      id:'plank', name:'Forearm plank', focus:'core', pill:'pill-core',
+      id:'plank', name:'Forearm Plank', focus:'core', pill:'pill-core',
       desc:'Forearms on floor, elbows under shoulders, toes on floor. Body straight line head to heels — no hips sagging or raised. Squeeze abs, glutes, quads. Breathe normally. Safer for lower back than sit-ups.',
       tiers: [
         {label:'Easy', reps:'15 sec', note:'Knees on floor is fine'},
         {label:'Medium', reps:'30 sec', note:'Full plank, toes only'},
         {label:'Hard', reps:'45 sec', note:'Lift one foot 2", alternate'}
       ],
-      diagram: `<svg viewBox="0 0 280 110" xmlns="http://www.w3.org/2000/svg">
-        <line x1="10" y1="90" x2="270" y2="90" stroke="#D3D1C7" stroke-width="1"/>
-        <circle cx="55" cy="52" r="9" fill="none" stroke="#2D5A3D" stroke-width="1.8"/>
-        <path d="M55 61 L200 62" stroke="#2D5A3D" stroke-width="2.2" fill="none" stroke-linecap="round"/>
-        <line x1="200" y1="62" x2="218" y2="72" stroke="#2D5A3D" stroke-width="1.8" stroke-linecap="round"/>
-        <line x1="218" y1="72" x2="228" y2="90" stroke="#2D5A3D" stroke-width="1.8" stroke-linecap="round"/>
-        <line x1="55" y1="61" x2="42" y2="75" stroke="#2D5A3D" stroke-width="1.8" stroke-linecap="round"/>
-        <line x1="42" y1="75" x2="38" y2="90" stroke="#2D5A3D" stroke-width="1.8" stroke-linecap="round"/>
-        <line x1="62" y1="75" x2="55" y2="90" stroke="#2D5A3D" stroke-width="1.8" stroke-linecap="round"/>
-        <text x="130" y="50" font-size="9" fill="#B8760A" font-family="DM Sans,sans-serif" text-anchor="middle">straight line ↔</text>
-        <path d="M55 55 L200 56" stroke="#B8760A" stroke-width="0.8" stroke-dasharray="4 3" fill="none"/>
-        <text x="140" y="105" font-size="9" fill="#6B6860" font-family="DM Sans,sans-serif" text-anchor="middle">Elbows under shoulders · squeeze everything</text>
-      </svg>`
+      diagram: `<img src="cadence-forearm-plank.png" alt="plank" style="width:100%;height:auto;border-radius:8px;display:block;">`
     },
     {
-      id:'dead-bug-off', name:'Dead bug', focus:'core', pill:'pill-core',
+      id:'dead-bug-off', name:'Dead Bug', focus:'core', pill:'pill-core',
       desc:'Same as run-day version — do it on off days too. Builds deep core stability that protects your spine during running and daily life. Priority exercise.',
       tiers: [
         {label:'Easy', reps:'5 each side', note:'Arms only'},
         {label:'Medium', reps:'8 each side', note:'Full arm + opposite leg'},
         {label:'Hard', reps:'10 each side', note:'3-sec hold at extension'}
       ],
-      diagram: `<svg viewBox="0 0 280 130" xmlns="http://www.w3.org/2000/svg">
-        <line x1="10" y1="100" x2="270" y2="100" stroke="#D3D1C7" stroke-width="1"/>
-        <ellipse cx="140" cy="88" rx="30" ry="8" fill="none" stroke="#2D5A3D" stroke-width="1.8"/>
-        <circle cx="112" cy="78" r="8" fill="none" stroke="#2D5A3D" stroke-width="1.8"/>
-        <line x1="120" y1="80" x2="140" y2="86" stroke="#2D5A3D" stroke-width="1.8"/>
-        <line x1="140" y1="80" x2="140" y2="68" stroke="#2D5A3D" stroke-width="1.8"/>
-        <line x1="140" y1="68" x2="125" y2="52" stroke="#2D5A3D" stroke-width="1.8"/>
-        <line x1="125" y1="52" x2="110" y2="38" stroke="#2D5A3D" stroke-width="1.5" stroke-linecap="round"/>
-        <line x1="140" y1="68" x2="158" y2="62" stroke="#2D5A3D" stroke-width="1.8"/>
-        <line x1="158" y1="62" x2="178" y2="62" stroke="#2D5A3D" stroke-width="1.5" stroke-linecap="round"/>
-        <circle cx="180" cy="62" r="3" fill="none" stroke="#B8760A" stroke-width="1.5"/>
-        <text x="186" y="60" font-size="9" fill="#B8760A" font-family="DM Sans,sans-serif">hover</text>
-        <text x="140" y="118" font-size="9" fill="#6B6860" font-family="DM Sans,sans-serif" text-anchor="middle">Back flat · opposite arm + leg · slow</text>
-      </svg>`
+      diagram: `<img src="cadence-dead-bugs.png" alt="dead-bug-off" style="width:100%;height:auto;border-radius:8px;display:block;">`
     },
     {
-      id:'incline-pushup', name:'Incline push-up (desk)', focus:'upper', pill:'pill-upper',
+      id:'incline-pushup', name:'Incline Push-Up (Desk)', focus:'upper', pill:'pill-upper',
       desc:'Hands on standing desk, feet back on diagonal. Lower chest toward desk, elbows ~45° from sides (not straight out). Push back up. As you get stronger, move hands to lower surface: chair seat → floor.',
       tiers: [
         {label:'Easy', reps:'8 reps', note:'Hands on desk (high incline)'},
         {label:'Medium', reps:'10 reps', note:'Hands on chair seat'},
         {label:'Hard', reps:'10 reps', note:'Floor push-up'}
       ],
-      diagram: `<svg viewBox="0 0 280 120" xmlns="http://www.w3.org/2000/svg">
-        <rect x="10" y="55" width="55" height="8" rx="3" fill="none" stroke="#9E9B94" stroke-width="1.5"/>
-        <line x1="20" y1="63" x2="18" y2="90" stroke="#9E9B94" stroke-width="1.5"/>
-        <line x1="55" y1="63" x2="53" y2="90" stroke="#9E9B94" stroke-width="1.5"/>
-        <circle cx="85" cy="45" r="9" fill="none" stroke="#2D5A3D" stroke-width="1.8"/>
-        <path d="M85 54 Q78 58 55 60" stroke="#2D5A3D" stroke-width="1.8" fill="none" stroke-linecap="round"/>
-        <path d="M85 54 Q90 62 130 75" stroke="#2D5A3D" stroke-width="2" fill="none" stroke-linecap="round"/>
-        <line x1="130" y1="75" x2="148" y2="90" stroke="#2D5A3D" stroke-width="1.8" stroke-linecap="round"/>
-        <line x1="148" y1="90" x2="160" y2="105" stroke="#2D5A3D" stroke-width="1.8" stroke-linecap="round"/>
-        <line x1="85" y1="62" x2="72" y2="70" stroke="#2D5A3D" stroke-width="1.5"/>
-        <line x1="90" y1="62" x2="103" y2="68" stroke="#2D5A3D" stroke-width="1.5"/>
-        <text x="180" y="72" font-size="10" fill="#6B6860" font-family="DM Sans,sans-serif">Elbows ~45°</text>
-        <text x="180" y="85" font-size="10" fill="#6B6860" font-family="DM Sans,sans-serif">from body</text>
-        <text x="140" y="115" font-size="9" fill="#6B6860" font-family="DM Sans,sans-serif" text-anchor="middle">Body stays straight — controlled down and up</text>
-      </svg>`
+      diagram: `<img src="cadence-incline-pushups.png" alt="incline-pushup" style="width:100%;height:auto;border-radius:8px;display:block;">`
     },
     {
-      id:'db-row', name:'Dumbbell row', focus:'upper', pill:'pill-upper',
+      id:'db-row', name:'Dumbbell Row', focus:'upper', pill:'pill-upper',
       desc:'One hand on desk for support, back flat and parallel to floor. Hold dumbbell in other hand, arm hanging down. Pull elbow up toward hip (not shoulder) — like starting a lawnmower slowly. Lower with control.',
       tiers: [
         {label:'Easy', reps:'8 each side', note:'Lightest dumbbell'},
         {label:'Medium', reps:'10 each side', note:'Moderate weight, slow'},
         {label:'Hard', reps:'12 each side', note:'1-sec squeeze at top'}
       ],
-      diagram: `<svg viewBox="0 0 280 120" xmlns="http://www.w3.org/2000/svg">
-        <rect x="10" y="52" width="50" height="7" rx="2" fill="none" stroke="#9E9B94" stroke-width="1.5"/>
-        <line x1="18" y1="59" x2="16" y2="85" stroke="#9E9B94" stroke-width="1.5"/>
-        <line x1="52" y1="59" x2="50" y2="85" stroke="#9E9B94" stroke-width="1.5"/>
-        <circle cx="75" cy="42" r="9" fill="none" stroke="#2D5A3D" stroke-width="1.8"/>
-        <path d="M75 51 Q72 56 60 56" stroke="#2D5A3D" stroke-width="1.8" fill="none" stroke-linecap="round"/>
-        <path d="M75 51 L130 58" stroke="#2D5A3D" stroke-width="2" fill="none" stroke-linecap="round"/>
-        <line x1="130" y1="58" x2="150" y2="75" stroke="#2D5A3D" stroke-width="1.8" stroke-linecap="round"/>
-        <line x1="150" y1="75" x2="162" y2="95" stroke="#2D5A3D" stroke-width="1.8" stroke-linecap="round"/>
-        <line x1="75" y1="58" x2="70" y2="72" stroke="#2D5A3D" stroke-width="1.5"/>
-        <line x1="85" y1="56" x2="95" y2="68" stroke="#2D5A3D" stroke-width="1.5"/>
-        <line x1="95" y1="68" x2="98" y2="85" stroke="#2D5A3D" stroke-width="1.5" stroke-dasharray="3 2"/>
-        <rect x="92" y="85" width="16" height="6" rx="2" fill="none" stroke="#B8760A" stroke-width="1.5"/>
-        <text x="112" y="91" font-size="9" fill="#B8760A" font-family="DM Sans,sans-serif">dumbbell</text>
-        <text x="180" y="58" font-size="10" fill="#6B6860" font-family="DM Sans,sans-serif">Pull elbow</text>
-        <text x="180" y="70" font-size="10" fill="#6B6860" font-family="DM Sans,sans-serif">to hip ↑</text>
-        <text x="140" y="112" font-size="9" fill="#6B6860" font-family="DM Sans,sans-serif" text-anchor="middle">Back flat · don't rotate · slow and controlled</text>
-      </svg>`
+      diagram: `<img src="cadence-dumbbell-row.png" alt="db-row" style="width:100%;height:auto;border-radius:8px;display:block;">`
     }
   ]
 };
